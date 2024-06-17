@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Message Board</title>
+</head>
+<body>
+    <main>
+        <h1>Welcome to the Message Board!</h1>
+        <div class="content-container">
+            <!-- Section for logged-out view -->
+            <section id="logged-out-view">
+                <div class="auth-page_container">
+                    <div class="form-container">
+                        <!-- Toggle buttons for sign in and sign up forms -->
+                        <div class="toggle-container">
+                            <div id="signin-toggle-btn" class="auth-toggle-signin">Login</div>
+                            <div id="signup-toggle-btn" class="auth-toggle-signup">Sign Up</div>
+                        </div>
+                        <!-- Sign in form -->
+                        <div id="signin-form" class="login-form-container">
+                            <div class="login-form">
+                                <h2>Login</h2>
+                                <div class="input-group">
+                                    <input type="email" id="signin-email-input" name="email" placeholder="Email" required>
+                                    <div id="email-error-message" class="error-msg"></div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" id="signin-password-input" name="password" placeholder="Password" required>
+                                    <div id="password-error-message" class="error-msg"></div>
+                                </div>
+                                <div id="sign-in-btn" class="login-btn">Sign In</div>
+                                <div class="alt-signin-divider">OR</div>
+                                <button id="sign-in-with-google-btn" class="google-login-btn">
+                                    <img src="images/google-icon.png" alt="Google Sign-in" class="google-btn-logo"> Sign in with Google
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Sign up form -->
+                        <div id="signup-form" class="login-form-container">
+                            <div class="login-form">
+                                <h2>Sign Up</h2>
+                                <div class="input-group">
+                                    <input type="email" id="signup-email-input" name="email" placeholder="Email" required>
+                                    <div id="email-error-message" class="error-msg"></div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" id="signup-password-input" name="password" placeholder="Password" required>
+                                    <div id="password-error-message" class="error-msg"></div>
+                                </div>
+                                <div id="sign-up-btn" class="login-btn">Create Account</div>
+                                <div class="alt-signin-divider">OR</div>
+                                <button id="sign-up-with-google-btn" class="google-login-btn">
+                                    <img src="images/google-icon.png" alt="Google Sign-in" class="google-btn-logo"> Sign Up with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <!-- Section for logged-in view -->
+            <section id="logged-in-view">
+                <div class="top-section">
+                    <h2 class="greeting">You are logged in as <span id="user-email"></span>.</h2>
+                    <button id="logout-button" class="logout-btn">Logout</button>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-form-group">
+                        <textarea class="msg-input-form" id="msg-input" name="message" placeholder="Type a message and let us know what's on your mind?"></textarea>
+                        <button class="msg-submit-btn" type="submit">Submit</button>
+                    </div>
+                    <div class="msg-list-container">
+                        <h3>MESSAGES</h3>
+                        <hr>
+                        <div class="message">
+                            <div class="user-tag">User: wiresift@gmail.com</div>
+                            <div class="user-msg">I am feeling like I want to build an app today.</div>
+                        </div>
+                        <div class="message">
+                            <div class="user-tag">User: test@gmail.com</div>
+                            <div class="user-msg">I'm super tired. No app building today. Just going to take a nap!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Script to toggle between signin and signup forms -->
+    <script>
+        const signinToggleBtn = document.getElementById("signin-toggle-btn");
+        const signupToggleBtn = document.getElementById("signup-toggle-btn");
+        const signInFormView = document.getElementById("signin-form");
+        const signUpFormView = document.getElementById("signup-form");
+
+        signinToggleBtn.addEventListener('click', () => {
+            signInFormView.style.display = 'block';
+            signUpFormView.style.display = 'none';
+            signinToggleBtn.style.backgroundColor = 'blue';
+            signinToggleBtn.style.color = 'white';
+            signupToggleBtn.style.backgroundColor = 'lightgrey';
+            signupToggleBtn.style.color = 'black';
+        });
+
+        signupToggleBtn.addEventListener('click', () => {
+            signInFormView.style.display = 'none';
+            signUpFormView.style.display = 'block';
+            signinToggleBtn.style.backgroundColor = 'lightgrey';
+            signinToggleBtn.style.color = 'black';
+            signupToggleBtn.style.backgroundColor = 'blue';
+            signupToggleBtn.style.color = 'white';
+        });
+    </script>
+
+    <!-- Import external script -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
